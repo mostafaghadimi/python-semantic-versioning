@@ -30,7 +30,7 @@ inputs:
     description: 'Create a prerelease'
     required: false
     default: 'false'
-    
+
   commit_author:
     description: 'Commit author for release commits'
     required: false
@@ -58,7 +58,7 @@ runs:
     - name: Install the project
       shell: bash
       run: uv sync --locked 
-        
+
     - name: Debug
       shell: bash
       run: ls -la ${{ github.workspace }}
