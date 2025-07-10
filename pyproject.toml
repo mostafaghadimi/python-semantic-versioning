@@ -1,7 +1,7 @@
 [project]
-name = "python-versioning"
+name = "python-semantic-versioning"
 version = "0.1.0"
-description = "Add your description here"
+description = "An open-source tool developed by DataBurst team to manage the versioning and generating changelog for projects."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
