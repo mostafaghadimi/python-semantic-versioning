@@ -5,8 +5,6 @@ echo "Debug: Current directory and files:"
 echo "PWD: $PWD"
 ls -lah
 
-export GH_TOKEN=${INPUT_GH_TOKEN}
-
 echo "Debug: GitHub workspace contents:"
 echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
 ls -lah "$GITHUB_WORKSPACE" 2>/dev/null || echo "Failed to list workspace contents"
@@ -34,6 +32,20 @@ if [ ! -d ".git" ]; then
     echo "Example workflow step:"
     echo "  - name: Checkout code"
     echo "    uses: actions/checkout@v4"
+    echo "    with:"
+    echo "      fetch-depth: 0"
+    echo ""
+    exit 1
+fi
+
+# Check if this is a shallow clone which is not supported
+if [ -f ".git/shallow" ]; then
+    echo "❌ ERROR: The repository is a shallow clone."
+    echo "semantic-release requires a full git history to determine the version."
+    echo "Please fetch the full history by setting 'fetch-depth: 0' in your checkout action."
+    echo ""
+    echo "Example:"
+    echo "  - uses: actions/checkout@v4"
     echo "    with:"
     echo "      fetch-depth: 0"
     echo ""
