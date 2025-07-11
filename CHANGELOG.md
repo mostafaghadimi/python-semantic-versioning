@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.3.3 (2025-07-12)
+
+### Bug Fixes
+
+- Resolve the issue with GIT_COMMIT_AUTHOR
+  ([`df21b06`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/df21b06bfdcda86914262ec42e0632e871250527))
+
+
 ## v2.3.2 (2025-07-12)
 
 ### Bug Fixes
