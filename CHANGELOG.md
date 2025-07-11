@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.1.1 (2025-07-11)
+
+### Bug Fixes
+
+- Comment safe.directory to see what happens
+  ([`0f626e2`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/0f626e234f4e2d90bc204e9f154d9aec24972d4b))
+
+
 ## v2.1.0 (2025-07-11)
 
 ### Features
