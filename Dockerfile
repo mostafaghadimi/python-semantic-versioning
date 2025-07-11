@@ -15,4 +15,4 @@ RUN chmod +x entrypoint.sh && \
     uv sync --locked
 
 
-ENTRYPOINT ["entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "-c", "ls -a"]
