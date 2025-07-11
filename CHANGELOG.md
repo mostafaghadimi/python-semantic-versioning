@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.22 (2025-07-11)
+
+### Bug Fixes
+
+- Change the order of execution of verbosity
+  ([`f7bde7f`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/f7bde7f43da790ee8ce599ef150878cbe185f5d4))
+
+
 ## v2.0.21 (2025-07-11)
 
 ### Bug Fixes
