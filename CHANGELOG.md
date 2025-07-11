@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.1.0 (2025-07-11)
+
+### Features
+
+- Create initial tag if no tag exists
+  ([`515b11e`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/515b11e9b5fed7bfcea7e58710b17a26a616f6d3))
+
+
 ## v2.0.22 (2025-07-11)
 
 ### Bug Fixes
