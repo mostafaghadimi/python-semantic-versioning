@@ -1,7 +1,7 @@
 [tool.semantic_release]
 assets = []
 build_command_env = []
-commit_message = ":bookmark: chore: release verison v{version}"
+commit_message = ":bookmark: chore: release verison v{version} [skip ci]"
 commit_parser = "custom_commit_parser:DataBurstEmojiCommitParser"
 logging_use_named_masks = false
 major_on_zero = true
