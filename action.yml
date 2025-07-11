@@ -48,4 +48,4 @@ outputs:
 
 runs:
   using: 'docker'
-  image: 'src/python-semantic-versioning/Dockerfile'
+  image: 'Dockerfile'
