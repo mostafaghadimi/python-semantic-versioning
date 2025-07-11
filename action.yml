@@ -31,6 +31,10 @@ inputs:
     required: false
     default: '/app/python-semantic-release-config.toml'
 
+  gh_token:
+    description: 'GitHub token with write permissions to push releases and tags.'
+    required: true
+
 outputs:
   version:
     description: 'The new version number'
