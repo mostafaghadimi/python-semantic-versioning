@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.0 (2025-07-11)
+
+### Features
+
+- Use Docker instead of composite
+  ([`43698ec`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/43698eca3d354bf6ed787aa321d3d7ab67ad8efd))
+
+
 ## v1.0.1 (2025-07-11)
 
 ### Bug Fixes
