@@ -49,7 +49,6 @@ autoescape = false
 
 [tool.semantic_release.commit_author]
 env = "GIT_COMMIT_AUTHOR"
-default = "Mostafa Ghadimi <mostafa.ghadimi@yahoo.com>"
 
 [tool.semantic_release.commit_parser_options]
 minor_tags = ["feat"]

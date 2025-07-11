@@ -1,6 +1,9 @@
 [project]
 name = "python-semantic-versioning"
 version = "0.1.0"
+authors = [
+  {name = "Mostafa Ghadimi", email = "mostafa.ghadimi@yahoo.com"},
+]
 description = "An open-source tool developed by DataBurst team to manage the versioning and generating changelog for projects."
 readme = "README.md"
 requires-python = ">=3.13"
