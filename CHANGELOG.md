@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.16 (2025-07-11)
+
+### Bug Fixes
+
+- Remove additional cd command
+  ([`921e3e0`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/921e3e094b62fccd75e599c12b241f81113ad554))
+
+
 ## v2.0.15 (2025-07-11)
 
 ### Bug Fixes
