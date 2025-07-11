@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.9 (2025-07-11)
+
+### Bug Fixes
+
+- Debug the code using ls
+  ([`3cf827e`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/3cf827e8da5199c28e60df64b7fd4f269872b808))
+
+
 ## v2.0.8 (2025-07-11)
 
 ### Bug Fixes
