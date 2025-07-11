@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.18 (2025-07-11)
+
+### Bug Fixes
+
+- Add gh_token as required inputs
+  ([`7462ea6`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/7462ea622743d26a3dba63e1a32b4a3553ea1b1e))
+
+
 ## v2.0.17 (2025-07-11)
 
 ### Bug Fixes
