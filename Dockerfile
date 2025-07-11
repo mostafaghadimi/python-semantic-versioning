@@ -12,6 +12,9 @@ COPY src/python-semantic-versioning/custom_commit_parser.py /app/
 COPY src/python-semantic-versioning/python-semantic-release-config.toml /app/
 COPY src/python-semantic-versioning/entrypoint.sh /app/
 
+ENV PATH="/app/.venv/bin:/root/.local/bin:$PATH"
+ENV PYTHONPATH=/app
+
 RUN cd /app && \
     chmod +x entrypoint.sh && \
     uv sync --locked

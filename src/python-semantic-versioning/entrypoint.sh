@@ -1,7 +1,14 @@
 #!/bin/bash
 set -e
 
-ls -lah  # debug
+echo "Debug: Current directory and files:"
+pwd
+ls -lah
+
+echo "Debug: /app directory:"
+ls -lah /app
+
+semantic-release --help
 
 DRY_RUN=${INPUT_DRY_RUN:-false}
 BRANCH=${INPUT_BRANCH:-main}
@@ -12,6 +19,7 @@ git config --global --add safe.directory /github/workspace
 git config --global user.name "${INPUT_COMMIT_AUTHOR%% *}"
 git config --global user.email "${INPUT_COMMIT_AUTHOR##* }"
 
+echo "workspace: $GITHUB_WORKSPACE"
 cd /github/workspace
 
 echo "released=false" >> $GITHUB_OUTPUT
@@ -22,7 +30,7 @@ echo "🚀 Starting semantic release..."
 
 if [[ "$DRY_RUN" == "true" ]]; then
   echo "Running semantic-release in dry-run mode..."
-  output=$(uv run semantic-release --dry-run --config $SEMANTIC_RELEASE_CONFIG version 2>&1) || true
+  output=$(semantic-release --dry-run --config $SEMANTIC_RELEASE_CONFIG version 2>&1) || true
   echo "$output"
   
   if echo "$output" | grep -q "would be released"; then
@@ -37,7 +45,7 @@ if [[ "$DRY_RUN" == "true" ]]; then
 else
   echo "Running semantic-release..."
   set +e
-  output=$(uv run semantic-release --config $SEMANTIC_RELEASE_CONFIG version 2>&1)
+  output=$(semantic-release --config $SEMANTIC_RELEASE_CONFIG version 2>&1)
   exit_code=$?
   set -e
   
