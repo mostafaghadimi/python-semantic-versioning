@@ -18,4 +18,4 @@ RUN cd /app && \
 
 ENV PYTHONPATH="/app"
 
-ENTRYPOINT ["/bin/bash", "-c", "ls /app"]
+ENTRYPOINT ["/bin/bash", "-c", "/app/entrypoint.sh"]
