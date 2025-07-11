@@ -1,6 +1,27 @@
 # CHANGELOG
 
 
+## v2.3.0 (2025-07-12)
+
+### Documentation
+
+- Add documentation for the action
+  ([`a94a42b`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/a94a42bfaf6201005eb811b0aa6d0cb1c192af33))
+
+### Features
+
+- Change the version in pyproject file in case of exsistence
+  ([`33e8bcf`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/33e8bcfb27ebfb82330fd553944aabee4e619f9c))
+
+### Refactoring
+
+- Improve the entrypoint.sh and action.yml file
+  ([`24112e4`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/24112e434584de399d0495ca89c87071b612ca2a))
+
+- Remove default value for commit_author in config.toml file and also add project author
+  ([`f99dc0e`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/f99dc0e24c67b1073e4de3f04b6e34b9c678631c))
+
+
 ## v2.2.5 (2025-07-11)
 
 ### Bug Fixes
