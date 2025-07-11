@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.1 (2025-07-11)
+
+### Bug Fixes
+
+- Resolve the issue with the path of files
+  ([`9b58ebb`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/9b58ebb23a29550d2ac560565f6f1ea2e325d566))
+
+
 ## v2.0.0 (2025-07-11)
 
 ### Features
