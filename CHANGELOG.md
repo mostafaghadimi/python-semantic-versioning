@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.10 (2025-07-11)
+
+### Bug Fixes
+
+- Resolve the issue of Dockerfile
+  ([`ef4fbf5`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/ef4fbf59b350531dd84d54c8853848b960efa0f8))
+
+
 ## v2.0.9 (2025-07-11)
 
 ### Bug Fixes
