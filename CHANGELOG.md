@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.2.3 (2025-07-11)
+
+### Bug Fixes
+
+- Remove github_token from inputs
+  ([`f51595c`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/f51595c71960ff55dbfb2e7cfade86a7aa7e1899))
+
+
 ## v2.2.2 (2025-07-11)
 
 ### Bug Fixes
