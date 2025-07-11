@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.3 (2025-07-11)
+
+### Bug Fixes
+
+- Move Dockerfile to the root
+  ([`08ed344`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/08ed344c976b7cf328ad500c84fd07f1072a9901))
+
+
 ## v2.0.2 (2025-07-11)
 
 ### Bug Fixes
