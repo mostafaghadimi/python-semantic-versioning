@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.2.5 (2025-07-11)
+
+### Bug Fixes
+
+- Use gh_token
+  ([`2c71615`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/2c71615ef1ff53c3375a17cfefcb42fd580dc91d))
+
+
 ## v2.2.4 (2025-07-11)
 
 ### Bug Fixes
