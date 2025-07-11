@@ -5,6 +5,8 @@ LABEL description="Automated semantic versioning using custom emoji commit parse
 
 RUN apk add --no-cache git bash
 
+COPY ../../pyproject.toml .
+COPY ../../uv.lock .
 COPY custom_commit_parser.py .
 COPY python-semantic-release-config.toml .
 COPY entrypoint.sh .
