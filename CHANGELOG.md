@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.11 (2025-07-11)
+
+### Bug Fixes
+
+- Change entrypoint to debug /app
+  ([`7a9d9f2`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/7a9d9f2e5c5201f6f732ee20112cc300043d3070))
+
+
 ## v2.0.10 (2025-07-11)
 
 ### Bug Fixes
