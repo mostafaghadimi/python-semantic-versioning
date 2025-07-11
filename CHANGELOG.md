@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.2.2 (2025-07-11)
+
+### Bug Fixes
+
+- Remove unnecessary tag generator
+  ([`14f984d`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/14f984d39bed75046d4047080e371c6a3a871714))
+
+
 ## v2.2.1 (2025-07-11)
 
 ### Bug Fixes
