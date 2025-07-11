@@ -53,6 +53,8 @@ else
   exit_code=$?
   set -e
   
+  echo $output
+
   if [[ $exit_code -eq 0 ]]; then
     if echo "$output" | grep -q "Creating release"; then
       version=$(echo "$output" | grep -oP "Creating release v\K[0-9]+\.[0-9]+\.[0-9]+") || true
@@ -69,7 +71,7 @@ else
             echo "✅ Updated pyproject.toml version to $version"
             git add pyproject.toml
             git commit -m ":bookmark: chore: bump version to $version [skip ci]"
-            # git push
+            git push
           else
             echo "Debug: No version line found in pyproject.toml"
           fi
