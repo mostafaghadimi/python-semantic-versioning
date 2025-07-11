@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.20 (2025-07-11)
+
+### Bug Fixes
+
+- Export GH_TOKEN and print it
+  ([`3aba6f6`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/3aba6f65ad13578767801dbaa050065de19180af))
+
+
 ## v2.0.19 (2025-07-11)
 
 ### Bug Fixes
