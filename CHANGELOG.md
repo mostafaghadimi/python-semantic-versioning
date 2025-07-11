@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.2 (2025-07-11)
+
+### Bug Fixes
+
+- Resolve the issue with pyproject and uv.lock files
+  ([`1f738fd`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/1f738fdf6d8cfecca09d85b22e4ed6d98658c9f6))
+
+
 ## v2.0.1 (2025-07-11)
 
 ### Bug Fixes
