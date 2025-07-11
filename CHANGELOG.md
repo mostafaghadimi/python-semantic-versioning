@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.8 (2025-07-11)
+
+### Bug Fixes
+
+- Remove WORKDIR based on action docs
+  ([`69e811b`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/69e811bd394e90d17f58e448b3341cc2b31699f4))
+
+
 ## v2.0.7 (2025-07-11)
 
 ### Bug Fixes
