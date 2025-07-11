@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.15 (2025-07-11)
+
+### Bug Fixes
+
+- Resolve the issue of entrypoint for current working directory
+  ([`42b0e68`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/42b0e685ebf369ca59afdb07c23c6e3065bfc8ef))
+
+
 ## v2.0.14 (2025-07-11)
 
 ### Bug Fixes
