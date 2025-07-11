@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.12 (2025-07-11)
+
+### Bug Fixes
+
+- Resovle the issue with the address of entrypoint
+  ([`ac92b8e`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/ac92b8edf92443768676d07f3fc2e165b63c6de1))
+
+
 ## v2.0.11 (2025-07-11)
 
 ### Bug Fixes
