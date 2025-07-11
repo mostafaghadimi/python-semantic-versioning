@@ -20,7 +20,7 @@ echo "🚀 Starting semantic release..."
 
 if [[ "$DRY_RUN" == "true" ]]; then
   echo "Running semantic-release in dry-run mode..."
-  output=$(uv run semantic-release --dry-run --config /action/$SEMANTIC_RELEASE_CONFIG version 2>&1) || true
+  output=$(uv run semantic-release --dry-run --config $SEMANTIC_RELEASE_CONFIG version 2>&1) || true
   echo "$output"
   
   if echo "$output" | grep -q "would be released"; then
@@ -35,7 +35,7 @@ if [[ "$DRY_RUN" == "true" ]]; then
 else
   echo "Running semantic-release..."
   set +e
-  output=$(uv run semantic-release --config /action/$SEMANTIC_RELEASE_CONFIG version 2>&1)
+  output=$(uv run semantic-release --config $SEMANTIC_RELEASE_CONFIG version 2>&1)
   exit_code=$?
   set -e
   
