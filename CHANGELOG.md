@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.3.4 (2025-07-12)
+
+### Bug Fixes
+
+- Export GIT_COMMIT_AUTHOR and also print it
+  ([`687e5dc`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/687e5dc6247d5c1b51828c100bc001acbc526ed3))
+
+
 ## v2.3.3 (2025-07-12)
 
 ### Bug Fixes
