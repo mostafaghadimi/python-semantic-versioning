@@ -2,21 +2,17 @@
 set -e
 
 echo "Debug: Current directory and files:"
-pwd
-ls -lah
+echo "PWD: $PWD"
+echo $(ls -lah)
 
-echo "Debug: /app directory:"
-ls -lah /app
+echo "ls $GITHUB_WORKSPACE"
 
-echo "Debug: Testing semantic-release availability:"
-cd /app && uv run semantic-release --help | head -5
 
 DRY_RUN=${INPUT_DRY_RUN:-false}
 BRANCH=${INPUT_BRANCH:-main}
 PRERELEASE=${INPUT_PRERELEASE:-false}
 SEMANTIC_RELEASE_CONFIG=${INPUT_SEMANTIC_RELEASE_CONFIG:-/app/python-semantic-release-config.toml}
 
-git config --global --add safe.directory /github/workspace
 git config --global --add safe.directory "$GITHUB_WORKSPACE"
 git config --global user.name "${INPUT_COMMIT_AUTHOR%% *}"
 git config --global user.email "${INPUT_COMMIT_AUTHOR##* }"
