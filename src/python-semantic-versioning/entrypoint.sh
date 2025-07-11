@@ -61,6 +61,21 @@ else
         echo "tag=v$version" >> $GITHUB_OUTPUT
         echo "released=true" >> $GITHUB_OUTPUT
         echo "✅ Successfully created release v$version"
+        
+        if [ -f "pyproject.toml" ]; then
+          if grep -q "^version = " pyproject.toml; then
+            echo "Debug: Found version line in pyproject.toml, updating to $version"
+            sed -i "s/^version = .*/version = \"$version\"/" pyproject.toml
+            echo "✅ Updated pyproject.toml version to $version"
+            git add pyproject.toml
+            git commit -m ":bookmark: chore: bump version to $version [skip ci]"
+            git push
+          else
+            echo "Debug: No version line found in pyproject.toml"
+          fi
+        else
+          echo "Debug: No pyproject.toml file found"
+        fi
       fi
     elif echo "$output" | grep -q "No release will be made"; then
       echo "ℹ️ No release needed - no significant changes since last release"
