@@ -6,11 +6,6 @@ branding:
   color: 'blue'
 
 inputs:
-  github_token:
-    description: 'GitHub token for authentication'
-    required: true
-    default: ${{ github.token }}
-
   dry_run:
     description: 'Perform a dry run without making changes'
     required: false
