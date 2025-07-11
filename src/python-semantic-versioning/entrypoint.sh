@@ -5,6 +5,7 @@ DEBUG=${INPUT_DEBUG:-false}
 DRY_RUN=${INPUT_DRY_RUN:-false}
 BRANCH=${INPUT_BRANCH:-main}
 PRERELEASE=${INPUT_PRERELEASE:-false}
+GIT_COMMIT_AUTHOR="${INPUT_COMMIT_AUTHOR}"
 SEMANTIC_RELEASE_CONFIG=${INPUT_SEMANTIC_RELEASE_CONFIG:-/app/python-semantic-release-config.toml}
 
 if [[ "$DEBUG" == "true" ]]; then
@@ -15,6 +16,8 @@ fi
 git config --global --add safe.directory "$GITHUB_WORKSPACE"
 git config --global user.name "${INPUT_COMMIT_AUTHOR%% *}"
 git config --global user.email "${INPUT_COMMIT_AUTHOR##* }"
+
+
 
 cd "$GITHUB_WORKSPACE"
 
