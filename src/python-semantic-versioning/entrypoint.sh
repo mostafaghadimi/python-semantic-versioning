@@ -3,9 +3,11 @@ set -e
 
 echo "Debug: Current directory and files:"
 echo "PWD: $PWD"
-echo $(ls -lah)
+ls -lah
 
-echo "ls $GITHUB_WORKSPACE"
+echo "Debug: GitHub workspace contents:"
+echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+ls -lah "$GITHUB_WORKSPACE" 2>/dev/null || echo "Failed to list workspace contents"
 
 
 DRY_RUN=${INPUT_DRY_RUN:-false}
@@ -17,7 +19,6 @@ git config --global --add safe.directory "$GITHUB_WORKSPACE"
 git config --global user.name "${INPUT_COMMIT_AUTHOR%% *}"
 git config --global user.email "${INPUT_COMMIT_AUTHOR##* }"
 
-echo "Debug: GitHub workspace: $GITHUB_WORKSPACE"
 echo "Debug: Changing to workspace directory..."
 cd "$GITHUB_WORKSPACE"
 
