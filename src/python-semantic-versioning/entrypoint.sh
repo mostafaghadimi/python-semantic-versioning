@@ -8,7 +8,8 @@ ls -lah
 echo "Debug: /app directory:"
 ls -lah /app
 
-semantic-release --help
+echo "Debug: Testing semantic-release availability:"
+cd /app && uv run semantic-release --help | head -5
 
 DRY_RUN=${INPUT_DRY_RUN:-false}
 BRANCH=${INPUT_BRANCH:-main}
@@ -16,11 +17,18 @@ PRERELEASE=${INPUT_PRERELEASE:-false}
 SEMANTIC_RELEASE_CONFIG=${INPUT_SEMANTIC_RELEASE_CONFIG:-/app/python-semantic-release-config.toml}
 
 git config --global --add safe.directory /github/workspace
+git config --global --add safe.directory "$GITHUB_WORKSPACE"
 git config --global user.name "${INPUT_COMMIT_AUTHOR%% *}"
 git config --global user.email "${INPUT_COMMIT_AUTHOR##* }"
 
-echo "workspace: $GITHUB_WORKSPACE"
-cd /github/workspace
+echo "Debug: GitHub workspace: $GITHUB_WORKSPACE"
+echo "Debug: Changing to workspace directory..."
+cd "$GITHUB_WORKSPACE"
+
+echo "Debug: Git repository status:"
+git status || echo "Git status failed"
+git log --oneline -5 || echo "Git log failed"
+git remote -v || echo "Git remote failed"
 
 echo "released=false" >> $GITHUB_OUTPUT
 echo "version=" >> $GITHUB_OUTPUT
@@ -30,7 +38,7 @@ echo "🚀 Starting semantic release..."
 
 if [[ "$DRY_RUN" == "true" ]]; then
   echo "Running semantic-release in dry-run mode..."
-  output=$(semantic-release --dry-run --config $SEMANTIC_RELEASE_CONFIG version 2>&1) || true
+  output=$(PYTHONPATH=/app /app/.venv/bin/semantic-release --dry-run --config $SEMANTIC_RELEASE_CONFIG version 2>&1) || true
   echo "$output"
   
   if echo "$output" | grep -q "would be released"; then
@@ -45,7 +53,7 @@ if [[ "$DRY_RUN" == "true" ]]; then
 else
   echo "Running semantic-release..."
   set +e
-  output=$(semantic-release --config $SEMANTIC_RELEASE_CONFIG version 2>&1)
+  output=$(PYTHONPATH=/app /app/.venv/bin/semantic-release --config $SEMANTIC_RELEASE_CONFIG version 2>&1)
   exit_code=$?
   set -e
   
