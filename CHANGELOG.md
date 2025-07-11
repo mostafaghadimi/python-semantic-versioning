@@ -1,6 +1,17 @@
 # CHANGELOG
 
 
+## v2.2.1 (2025-07-11)
+
+### Bug Fixes
+
+- Add remote.token table to config
+  ([`c473dfc`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/c473dfc953874fab57cfbc69756e8e4c87215086))
+
+- Remove gh_token from inputs
+  ([`a44279a`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/a44279a8e5fac5ae7e86ae902ea73c401fa28bb2))
+
+
 ## v2.2.0 (2025-07-11)
 
 ### Features
