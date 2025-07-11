@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.13 (2025-07-11)
+
+### Bug Fixes
+
+- Resolve the issue with PATH
+  ([`c937332`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/c9373320e966512d48a5a08d2e627de5fa849de8))
+
+
 ## v2.0.12 (2025-07-11)
 
 ### Bug Fixes
