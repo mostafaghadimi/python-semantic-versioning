@@ -37,7 +37,7 @@ echo $GH_TOKEN
 
 if [[ "$DRY_RUN" == "true" ]]; then
   echo "Running semantic-release in dry-run mode..."
-  output=$(PYTHONPATH=/app /app/.venv/bin/semantic-release --dry-run --config $SEMANTIC_RELEASE_CONFIG version 2>&1 -vv) || true
+  output=$(PYTHONPATH=/app /app/.venv/bin/semantic-release -vv --dry-run --config $SEMANTIC_RELEASE_CONFIG version 2>&1) || true
   echo "$output"
   
   if echo "$output" | grep -q "would be released"; then
@@ -52,7 +52,7 @@ if [[ "$DRY_RUN" == "true" ]]; then
 else
   echo "Running semantic-release..."
   set +e
-  output=$(PYTHONPATH=/app /app/.venv/bin/semantic-release --config $SEMANTIC_RELEASE_CONFIG version 2>&1 -vv)
+  output=$(PYTHONPATH=/app /app/.venv/bin/semantic-release -vv --config $SEMANTIC_RELEASE_CONFIG version 2>&1)
   exit_code=$?
   set -e
   
