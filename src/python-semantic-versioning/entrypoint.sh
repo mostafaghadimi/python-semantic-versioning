@@ -6,7 +6,7 @@ ls -lah  # debug
 DRY_RUN=${INPUT_DRY_RUN:-false}
 BRANCH=${INPUT_BRANCH:-main}
 PRERELEASE=${INPUT_PRERELEASE:-false}
-SEMANTIC_RELEASE_CONFIG=${INPUT_SEMANTIC_RELEASE_CONFIG:-/action/python-semantic-release-config.toml}
+SEMANTIC_RELEASE_CONFIG=${INPUT_SEMANTIC_RELEASE_CONFIG:-/app/python-semantic-release-config.toml}
 
 git config --global --add safe.directory /github/workspace
 git config --global user.name "${INPUT_COMMIT_AUTHOR%% *}"

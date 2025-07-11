@@ -5,14 +5,17 @@ LABEL description="Automated semantic versioning using custom emoji commit parse
 
 RUN apk add --no-cache git bash
 
+RUN mkdir -p /app
 
-COPY pyproject.toml uv.lock ./
-COPY src/python-semantic-versioning/custom_commit_parser.py ./
-COPY src/python-semantic-versioning/python-semantic-release-config.toml ./
-COPY src/python-semantic-versioning/entrypoint.sh ./
+COPY pyproject.toml uv.lock /app/
+COPY src/python-semantic-versioning/custom_commit_parser.py /app/
+COPY src/python-semantic-versioning/python-semantic-release-config.toml /app/
+COPY src/python-semantic-versioning/entrypoint.sh /app/
 
-RUN chmod +x entrypoint.sh && \
+RUN cd /app && \
+    chmod +x entrypoint.sh && \
     uv sync --locked
 
+ENV PYTHONPATH="/app"
 
-ENTRYPOINT ["/bin/bash", "-c", "ls -a"]
+ENTRYPOINT ["/app/entrypoint.sh"]
