@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.5 (2025-07-11)
+
+### Bug Fixes
+
+- Add some commands to entrypoint for debugging purpose
+  ([`3c93ade`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/3c93ade64a57a8ad801e7244b6d8c0f7c5b12f3c))
+
+
 ## v2.0.4 (2025-07-11)
 
 ### Bug Fixes
