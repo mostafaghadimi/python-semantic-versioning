@@ -9,13 +9,13 @@ RUN mkdir -p /action
 WORKDIR /action
 
 COPY pyproject.toml uv.lock ./
-COPY custom_commit_parser.py ./
+COPY src/python-semantic-versioning/custom_commit_parser.py ./
 COPY src/python-semantic-versioning/python-semantic-release-config.toml ./
 COPY src/python-semantic-versioning/entrypoint.sh ./
 
 RUN chmod +x entrypoint.sh && \
     uv sync --locked
 
-ENV PYTHONPATH="/action:$PYTHONPATH"
+ENV PYTHONPATH="/action"
 
 ENTRYPOINT ["/action/entrypoint.sh"]
