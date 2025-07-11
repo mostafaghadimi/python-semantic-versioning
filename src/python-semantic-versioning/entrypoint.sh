@@ -69,7 +69,7 @@ else
             echo "✅ Updated pyproject.toml version to $version"
             git add pyproject.toml
             git commit -m ":bookmark: chore: bump version to $version [skip ci]"
-            git push
+            # git push
           else
             echo "Debug: No version line found in pyproject.toml"
           fi
