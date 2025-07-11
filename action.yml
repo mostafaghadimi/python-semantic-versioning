@@ -34,7 +34,7 @@ inputs:
   semantic_release_config:
     description: 'Semantic release config file name'
     required: false
-    default: 'python-semantic-release-config.toml'
+    default: '/app/python-semantic-release-config.toml'
 
 outputs:
   version:
