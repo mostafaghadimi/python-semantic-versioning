@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.21 (2025-07-11)
+
+### Bug Fixes
+
+- Add verbosity to semantic-release command
+  ([`931ce37`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/931ce37f073f522d7a85764fe984fff6cbdd1eeb))
+
+
 ## v2.0.20 (2025-07-11)
 
 ### Bug Fixes
