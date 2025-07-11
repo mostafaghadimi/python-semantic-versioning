@@ -14,7 +14,6 @@ inputs:
   gh_token:
     description: 'Github Token to push to repository'
     required: true
-    default: ${{ secrets.GH_TOKEN }}
 
   dry_run:
     description: 'Perform a dry run without making changes'
