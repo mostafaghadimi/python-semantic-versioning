@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.3.2 (2025-07-12)
+
+### Bug Fixes
+
+- Add echo output to debug the misfunctioning
+  ([`6181654`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/618165434c05eaf751b6fb174c2b9c50c1f53413))
+
+
 ## v2.3.1 (2025-07-12)
 
 ### Bug Fixes
