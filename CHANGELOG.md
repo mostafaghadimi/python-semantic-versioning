@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.17 (2025-07-11)
+
+### Bug Fixes
+
+- Debug the issue with GITHUB_WORKSPACE
+  ([`b790cca`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/b790cca82b989a92bcc390ad347aa935ebc399f9))
+
+
 ## v2.0.16 (2025-07-11)
 
 ### Bug Fixes
