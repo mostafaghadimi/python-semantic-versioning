@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.1.2 (2025-07-11)
+
+### Bug Fixes
+
+- Resolve the issue with safe.directory
+  ([`1815d44`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/1815d4477fa91bc4a5c40fbe30fe563236eed09e))
+
+
 ## v2.1.1 (2025-07-11)
 
 ### Bug Fixes
