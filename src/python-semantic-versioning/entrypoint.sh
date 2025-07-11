@@ -9,7 +9,6 @@ echo "Debug: GitHub workspace contents:"
 echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
 ls -lah "$GITHUB_WORKSPACE" 2>/dev/null || echo "Failed to list workspace contents"
 
-# Environment variables
 DRY_RUN=${INPUT_DRY_RUN:-false}
 BRANCH=${INPUT_BRANCH:-main}
 PRERELEASE=${INPUT_PRERELEASE:-false}
@@ -19,6 +18,15 @@ git config --global --add safe.directory "$GITHUB_WORKSPACE"
 git config --global user.name "${INPUT_COMMIT_AUTHOR%% *}"
 git config --global user.email "${INPUT_COMMIT_AUTHOR##* }"
 
+echo "Debug: Changing to workspace directory..."
+cd "$GITHUB_WORKSPACE"
+
+if [ -n "${INPUT_GH_TOKEN:-}" ]; then
+    export GH_TOKEN="${INPUT_GH_TOKEN}"
+    echo "✅ GitHub token configured for releases"
+elif [ -n "${GITHUB_ACTIONS:-}" ]; then
+    echo "⚠️ Warning: No GitHub token provided. Releases may not work."
+fi
 
 echo "released=false" >> $GITHUB_OUTPUT
 echo "version=" >> $GITHUB_OUTPUT
