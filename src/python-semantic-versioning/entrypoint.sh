@@ -15,7 +15,7 @@ BRANCH=${INPUT_BRANCH:-main}
 PRERELEASE=${INPUT_PRERELEASE:-false}
 SEMANTIC_RELEASE_CONFIG=${INPUT_SEMANTIC_RELEASE_CONFIG:-/app/python-semantic-release-config.toml}
 
-# git config --global --add safe.directory "$GITHUB_WORKSPACE"
+git config --global --add safe.directory "$GITHUB_WORKSPACE"
 git config --global user.name "${INPUT_COMMIT_AUTHOR%% *}"
 git config --global user.email "${INPUT_COMMIT_AUTHOR##* }"
 
@@ -27,33 +27,12 @@ git status || echo "Git status failed"
 git log --oneline -5 || echo "Git log failed"
 git remote -v || echo "Git remote failed"
 
-# Check if repository has any tags
-echo "Debug: Checking for existing tags..."
-existing_tags=$(git tag -l)
-if [ -z "$existing_tags" ]; then
-    echo "⚠️ No tags found in repository. Creating initial tag v0.0.0..."
-    echo "This is required for semantic-release to work properly."
-    
-    # Create initial tag
-    git tag v0.0.0
-    git push origin v0.0.0 || echo "Warning: Failed to push initial tag (this might be expected in some cases)"
-    
-    echo "✅ Created initial tag v0.0.0"
-else
-    echo "✅ Found existing tags:"
-    echo "$existing_tags" | head -5
-    if [ $(echo "$existing_tags" | wc -l) -gt 5 ]; then
-        echo "... and $(( $(echo "$existing_tags" | wc -l) - 5 )) more"
-    fi
-fi
-
 echo "released=false" >> $GITHUB_OUTPUT
 echo "version=" >> $GITHUB_OUTPUT
 echo "tag=" >> $GITHUB_OUTPUT
 
 echo "🚀 Starting semantic release..."
-export GH_TOKEN=${INPUT_GH_TOKEN}
-echo $GH_TOKEN
+
 
 if [[ "$DRY_RUN" == "true" ]]; then
   echo "Running semantic-release in dry-run mode..."
