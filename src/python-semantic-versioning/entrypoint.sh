@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+ls -lah  # debug
+
 DRY_RUN=${INPUT_DRY_RUN:-false}
 BRANCH=${INPUT_BRANCH:-main}
 PRERELEASE=${INPUT_PRERELEASE:-false}
