@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.6 (2025-07-11)
+
+### Bug Fixes
+
+- Add WORKDIR to Dockerfile
+  ([`6fb3f2b`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/6fb3f2bd7390d63288d7c096c5713078f7d1bc12))
+
+
 ## v2.0.5 (2025-07-11)
 
 ### Bug Fixes
