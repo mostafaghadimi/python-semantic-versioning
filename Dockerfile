@@ -15,5 +15,5 @@ COPY src/python-semantic-versioning/entrypoint.sh .
 RUN chmod +x entrypoint.sh && \
     uv sync --locked
 
-ENTRYPOINT ["/bin/bash", "-c", "ls -lah"]
+ENTRYPOINT ["/bin/bash", "-c", "echo $PWD && ls -lah && echo $GITHUB_WORKSPACE"]
     # ENTRYPOINT ["entrypoint.sh"]
