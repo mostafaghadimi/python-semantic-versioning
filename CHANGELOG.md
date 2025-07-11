@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.4 (2025-07-11)
+
+### Bug Fixes
+
+- Add a line to entrypoint to list all files for debugging purpose
+  ([`ca4c967`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/ca4c9672b114f3b1ae6158cbc458125de3403e98))
+
+
 ## v2.0.3 (2025-07-11)
 
 ### Bug Fixes
