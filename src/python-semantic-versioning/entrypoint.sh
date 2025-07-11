@@ -32,6 +32,8 @@ echo "version=" >> $GITHUB_OUTPUT
 echo "tag=" >> $GITHUB_OUTPUT
 
 echo "🚀 Starting semantic release..."
+export GH_TOKEN=${INPUT_GH_TOKEN}
+echo $GH_TOKEN
 
 if [[ "$DRY_RUN" == "true" ]]; then
   echo "Running semantic-release in dry-run mode..."
