@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.14 (2025-07-11)
+
+### Bug Fixes
+
+- Resolve the issue of semantic_release_config in action.yml
+  ([`7a0abdc`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/7a0abdc7d3797a10c1d1adb4ef7f75b26df5c279))
+
+
 ## v2.0.13 (2025-07-11)
 
 ### Bug Fixes
