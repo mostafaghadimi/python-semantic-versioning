@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.0.19 (2025-07-11)
+
+### Bug Fixes
+
+- Remove default value for gh_token
+  ([`59cec0a`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/59cec0a1858f2213de2523ff370b82fe7ed5c09d))
+
+
 ## v2.0.18 (2025-07-11)
 
 ### Bug Fixes
