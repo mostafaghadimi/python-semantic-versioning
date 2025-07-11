@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.2.0 (2025-07-11)
+
+### Features
+
+- Add GH_TOKEN and make the github action works properly
+  ([`6bdbc27`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/6bdbc27d1c00e4dd180057c5934af92054136ee0))
+
+
 ## v2.1.2 (2025-07-11)
 
 ### Bug Fixes
