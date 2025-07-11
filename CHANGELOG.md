@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.3.1 (2025-07-12)
+
+### Bug Fixes
+
+- Comment the git push command to see what happens
+  ([`a1c09bc`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/a1c09bce5f26f1a79a3bc493b4bbc15ce5e6536d))
+
+
 ## v2.3.0 (2025-07-12)
 
 ### Documentation
