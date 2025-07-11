@@ -5,8 +5,13 @@ DEBUG=${INPUT_DEBUG:-false}
 DRY_RUN=${INPUT_DRY_RUN:-false}
 BRANCH=${INPUT_BRANCH:-main}
 PRERELEASE=${INPUT_PRERELEASE:-false}
-GIT_COMMIT_AUTHOR="${INPUT_COMMIT_AUTHOR}"
 SEMANTIC_RELEASE_CONFIG=${INPUT_SEMANTIC_RELEASE_CONFIG:-/app/python-semantic-release-config.toml}
+export GIT_COMMIT_AUTHOR="${INPUT_COMMIT_AUTHOR}"
+
+if [[ "$DEBUG" == "true" ]]; then
+    echo "Debug: INPUT_COMMIT_AUTHOR = '${INPUT_COMMIT_AUTHOR}'"
+    echo "Debug: GIT_COMMIT_AUTHOR = '${GIT_COMMIT_AUTHOR}'"
+fi
 
 if [[ "$DEBUG" == "true" ]]; then
     echo "Debug: GitHub workspace contents:"
@@ -17,7 +22,8 @@ git config --global --add safe.directory "$GITHUB_WORKSPACE"
 git config --global user.name "${INPUT_COMMIT_AUTHOR%% *}"
 git config --global user.email "${INPUT_COMMIT_AUTHOR##* }"
 
-
+# Export the commit author for semantic-release
+export GIT_COMMIT_AUTHOR="${INPUT_COMMIT_AUTHOR}"
 
 cd "$GITHUB_WORKSPACE"
 
