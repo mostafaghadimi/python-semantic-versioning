@@ -212,13 +212,15 @@ description = "My awesome package"
 ```
 
 **What happens after a release:**
+
 1. ✅ Creates the new version tag and GitHub release
 2. ✅ Updates the version in `pyproject.toml` to match the new release
 3. ✅ Commits and pushes the updated `pyproject.toml` with `[skip ci]` to prevent loops
 4. ✅ Keeps your package version in sync with your git tags
 
 **Example commit message:**
-```
+
+```bash
 :bookmark: chore: bump version to 1.2.3 [skip ci]
 ```
 
