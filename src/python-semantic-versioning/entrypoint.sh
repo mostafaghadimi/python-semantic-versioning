@@ -66,6 +66,7 @@ else
     echo $output
   fi
 
+  echo exit_code: $exit_code
   if [[ $exit_code -eq 0 ]]; then
     if echo "$output" | grep -q "Creating release"; then
       version=$(echo "$output" | grep -oE "Creating release v([0-9]+\.[0-9]+\.[0-9]+)" | sed 's/Creating release v//') || true
