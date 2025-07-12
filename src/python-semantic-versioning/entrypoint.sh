@@ -9,11 +9,6 @@ SEMANTIC_RELEASE_CONFIG=${INPUT_SEMANTIC_RELEASE_CONFIG:-/app/python-semantic-re
 export GIT_COMMIT_AUTHOR="${INPUT_COMMIT_AUTHOR}"
 
 if [[ "$DEBUG" == "true" ]]; then
-    echo "Debug: INPUT_COMMIT_AUTHOR = '${INPUT_COMMIT_AUTHOR}'"
-    echo "Debug: GIT_COMMIT_AUTHOR = '${GIT_COMMIT_AUTHOR}'"
-fi
-
-if [[ "$DEBUG" == "true" ]]; then
     echo "Debug: GitHub workspace contents:"
     ls -lah "$GITHUB_WORKSPACE" 2>/dev/null
 fi
@@ -21,9 +16,6 @@ fi
 git config --global --add safe.directory "$GITHUB_WORKSPACE"
 git config --global user.name "${INPUT_COMMIT_AUTHOR%% *}"
 git config --global user.email "${INPUT_COMMIT_AUTHOR##* }"
-
-# Export the commit author for semantic-release
-export GIT_COMMIT_AUTHOR="${INPUT_COMMIT_AUTHOR}"
 
 cd "$GITHUB_WORKSPACE"
 
@@ -63,14 +55,13 @@ else
   set -e
   
   if [[ "$DEBUG" == "true" ]]; then
-    echo $output
+    echo output: $output
+    echo exit_code: $exit_code
   fi
 
-  echo exit_code: $exit_code
   if [[ $exit_code -eq 0 ]]; then
     if echo "$output" | grep -q "Creating release"; then
       version=$(PYTHONPATH=/app /app/.venv/bin/semantic-release version --print-last-released-tag)
-      echo version: $version
       if [[ -n "$version" ]]; then
         echo "version=$version" >> $GITHUB_OUTPUT
         echo "tag=v$version" >> $GITHUB_OUTPUT
