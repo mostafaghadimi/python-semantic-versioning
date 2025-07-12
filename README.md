@@ -11,6 +11,7 @@ A GitHub Action for automated semantic versioning using custom emoji commit pars
 - 🎭 **Dry-run mode** for testing without making changes
 - 🐛 **Debug mode** for troubleshooting
 - 📤 **GitHub releases** - creates releases with changelog
+- 🔄 **Automatic version sync** - commits updated pyproject.toml with new version
 
 ## Quick Start
 
@@ -100,6 +101,8 @@ jobs:
 ## Commit Convention
 
 This action uses a custom emoji-based commit parser. Your commits should follow this pattern:
+
+> **Note**: After a successful release, the action will automatically update your `pyproject.toml` version and commit the change to keep it in sync with your git tags.
 
 ### Version Bumps
 
@@ -199,13 +202,24 @@ jobs:
 
 ### pyproject.toml Integration
 
-The action automatically updates your `pyproject.toml` file after a successful release:
+The action automatically updates your `pyproject.toml` file after a successful release and commits the change:
 
 ```toml
 [project]
 name = "my-package"
-version = "1.0.0"  # This gets updated automatically
+version = "1.0.0"  # This gets updated automatically to match the new release
 description = "My awesome package"
+```
+
+**What happens after a release:**
+1. ✅ Creates the new version tag and GitHub release
+2. ✅ Updates the version in `pyproject.toml` to match the new release
+3. ✅ Commits and pushes the updated `pyproject.toml` with `[skip ci]` to prevent loops
+4. ✅ Keeps your package version in sync with your git tags
+
+**Example commit message:**
+```
+:bookmark: chore: bump version to 1.2.3 [skip ci]
 ```
 
 ## Troubleshooting
