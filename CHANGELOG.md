@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.3.6 (2025-07-12)
+
+### Bug Fixes
+
+- Resolve the issue with grep command
+  ([`ba61527`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/ba61527d44bcdcea3b4da1d93d2a8478e1611714))
+
+
 ## v2.3.5 (2025-07-12)
 
 ### Bug Fixes
