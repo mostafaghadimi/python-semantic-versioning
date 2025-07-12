@@ -18,3 +18,4 @@ jobs:
         uses: mostafaghadimi/python-semantic-versioning@main
         with:
           gh_token: ${{ secrets.GITHUB_TOKEN }}
+          debug: true
