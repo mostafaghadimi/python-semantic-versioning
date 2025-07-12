@@ -69,7 +69,8 @@ else
   echo exit_code: $exit_code
   if [[ $exit_code -eq 0 ]]; then
     if echo "$output" | grep -q "Creating release"; then
-      version=$(echo "$output" | grep -oE "Creating release v([0-9]+\.[0-9]+\.[0-9]+)" | sed 's/Creating release v//') || true
+      version=$(PYTHONPATH=/app /app/.venv/bin/semantic-release version --print-last-released-tag)
+      echo version: $version
       if [[ -n "$version" ]]; then
         echo "version=$version" >> $GITHUB_OUTPUT
         echo "tag=v$version" >> $GITHUB_OUTPUT
