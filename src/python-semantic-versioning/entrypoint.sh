@@ -45,7 +45,7 @@ if [[ "$DRY_RUN" == "true" ]]; then
   output=$(PYTHONPATH=/app /app/.venv/bin/semantic-release -vv --dry-run --config $SEMANTIC_RELEASE_CONFIG version 2>&1) || true
   
   if echo "$output" | grep -q "would be released"; then
-    version=$(echo "$output" | grep -oP "would be released as \K[0-9]+\.[0-9]+\.[0-9]+") || true
+    version=$(echo "$output" | grep -oE "would be released as ([0-9]+\.[0-9]+\.[0-9]+)" | sed 's/would be released as //') || true
     if [[ -n "$version" ]]; then
       echo "version=$version" >> $GITHUB_OUTPUT
       echo "tag=v$version" >> $GITHUB_OUTPUT
@@ -62,11 +62,13 @@ else
   exit_code=$?
   set -e
   
-  echo $output
+  if [[ "$DEBUG" == "true" ]]; then
+    echo $output
+  fi
 
   if [[ $exit_code -eq 0 ]]; then
     if echo "$output" | grep -q "Creating release"; then
-      version=$(echo "$output" | grep -oP "Creating release v\K[0-9]+\.[0-9]+\.[0-9]+") || true
+      version=$(echo "$output" | grep -oE "Creating release v([0-9]+\.[0-9]+\.[0-9]+)" | sed 's/Creating release v//') || true
       if [[ -n "$version" ]]; then
         echo "version=$version" >> $GITHUB_OUTPUT
         echo "tag=v$version" >> $GITHUB_OUTPUT
