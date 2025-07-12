@@ -1,6 +1,30 @@
 # CHANGELOG
 
 
+## v2.5.0 (2025-07-12)
+
+### Bug Fixes
+
+- Replace gh_token with github_token
+  ([`6c14869`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/6c1486970a56aa4713c1120d1d26a51daeaa8344))
+
+- Set debug as true
+  ([`ddca1af`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/ddca1aff24e77942f90f3cd22ebe506847d3bd5b))
+
+### Documentation
+
+- Add notes about pyproject version update
+  ([`a53b6cc`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/a53b6cc083c9c6a86901d319229830c426754a3b))
+
+- Fix some markdown typos
+  ([`d07af12`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/d07af1281daf44c62d4cf5cb5178647554a17f86))
+
+### Features
+
+- Add release workflow as a CI pipeline
+  ([`0079308`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/007930847a20d19fbf7fef20fc880b2ce216dd40))
+
+
 ## v2.4.0 (2025-07-12)
 
 ### Features
@@ -542,32 +566,34 @@
 
 ### Bug Fixes
 
-- Add author field to let github publish the action in marketplace
-  ([`4c890e5`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/4c890e56a74c6d640d94aed53f965e1b665db771))
-
 - Change the python version
   ([`6a09918`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/6a09918796343a53fcd11df0b809ee7f7dd234e6))
-
-- Replace spaces with tabs
-  ([`554d5f0`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/554d5f01bbf33564b3a1479253ca8cbf50890d08))
 
 ### Chores
 
 - Release verison v1.0.1
   ([`4d2c07c`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/4d2c07ca562a651c5b0bd327809f895f2439dd70))
 
-### Documentation
-
-- Initialize README file that may end in marketplace publishment
-  ([`7b706ee`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/7b706ee39e48b9b0be124692dc3ba2cc494395d3))
-
 
 ## v1.0.0 (2025-07-11)
+
+### Bug Fixes
+
+- Add author field to let github publish the action in marketplace
+  ([`4c890e5`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/4c890e56a74c6d640d94aed53f965e1b665db771))
+
+- Replace spaces with tabs
+  ([`554d5f0`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/554d5f01bbf33564b3a1479253ca8cbf50890d08))
 
 ### Chores
 
 - Add ruff to development requirements
   ([`356fb57`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/356fb572f1f270e4fe363c46f2363c310d7e76ed))
+
+### Documentation
+
+- Initialize README file that may end in marketplace publishment
+  ([`7b706ee`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/7b706ee39e48b9b0be124692dc3ba2cc494395d3))
 
 ### Features
 
