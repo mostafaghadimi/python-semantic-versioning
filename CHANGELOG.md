@@ -1,6 +1,28 @@
 # CHANGELOG
 
 
+## v2.6.0 (2025-07-12)
+
+### Chores
+
+- Bump version to v2.5.1 [skip ci]
+  ([`b880a90`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/b880a902d7573f2733c9d6ca3fb909b17d0c4226))
+
+### Documentation
+
+- Improve the usage of GH_TOKEN and GITHUB_TOKEN
+  ([`004aaff`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/004aaff6a2d472bcc62a388c82ebe9944ba5617c))
+
+- Improve token explanation
+  ([`5cad95f`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/5cad95f21c68a03036ad596dc3bd29bbfb9f74c7))
+
+### Features
+
+- Create a workflow to push the docker image on DockerHub (#2)
+  ([#2](https://github.com/mostafaghadimi/python-semantic-versioning/pull/2),
+  [`ece0a10`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/ece0a106cf925a05d2b9982da8a5a88ed965e66d))
+
+
 ## v2.5.1 (2025-07-12)
 
 ### Bug Fixes
