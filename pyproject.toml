@@ -1,6 +1,6 @@
 [project]
 name = "python-semantic-versioning"
-version = "0.1.0"
+version = "v2.5.0"
 authors = [
   {name = "Mostafa Ghadimi", email = "mostafa.ghadimi@yahoo.com"},
 ]
