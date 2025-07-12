@@ -38,7 +38,7 @@ jobs:
       - name: DataBurst Python Semantic Versioning
         uses: mostafaghadimi/python-semantic-versioning@v2.2.5
         with:
-          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          gh_token: ${{ secrets.GH_TOKEN }}
 ```
 
 ### Advanced Usage
@@ -64,7 +64,7 @@ jobs:
         uses: mostafaghadimi/python-semantic-versioning@v2.2.5
         id: semantic-release
         with:
-          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          gh_token: ${{ secrets.GH_TOKEN }}
           dry_run: 'false'
           branch: 'main'
           prerelease: 'false'
@@ -141,7 +141,7 @@ jobs:
       - name: DataBurst Python Semantic Versioning
         uses: mostafaghadimi/python-semantic-versioning@v2.2.5
         with:
-          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          gh_token: ${{ secrets.GH_TOKEN }}
 ```
 
 ### Dry Run Testing
@@ -150,7 +150,7 @@ jobs:
 - name: Test Release (Dry Run)
   uses: mostafaghadimi/python-semantic-versioning@v2.2.5
   with:
-    gh_token: ${{ secrets.GITHUB_TOKEN }}
+    gh_token: ${{ secrets.GH_TOKEN }}
     dry_run: 'true'
     debug: 'true'
 ```
@@ -161,7 +161,7 @@ jobs:
 - name: Create Prerelease
   uses: mostafaghadimi/python-semantic-versioning@v2.2.5
   with:
-    gh_token: ${{ secrets.GITHUB_TOKEN }}
+    gh_token: ${{ secrets.GH_TOKEN }}
     prerelease: 'true'
     branch: 'develop'
 ```
@@ -173,7 +173,7 @@ jobs:
   uses: mostafaghadimi/python-semantic-versioning@v2.2.5
   id: semantic-release
   with:
-    gh_token: ${{ secrets.GITHUB_TOKEN }}
+    gh_token: ${{ secrets.GH_TOKEN }}
 
 - name: Deploy if new release
   if: steps.semantic-release.outputs.released == 'true'
@@ -197,7 +197,7 @@ jobs:
    - Enable "Allow GitHub Actions to create and approve pull requests"
 
 2. **Token Setup**: Use either:
-   - **Default `GITHUB_TOKEN`** (recommended for most cases)
+   - **Default `GH_TOKEN`** (recommended for most cases)
    - **Personal Access Token** (if you need more permissions)
 
 ### pyproject.toml Integration
@@ -246,7 +246,7 @@ description = "My awesome package"
 **Cause**: Token doesn't have write permissions
 **Solution**:
 
-- For `GITHUB_TOKEN`: Enable write permissions in repository settings
+- For `GH_TOKEN`: Enable write permissions in repository settings
 - For custom token: Ensure it has `repo` scope
 
 #### 3. "No GitHub token provided" Warning
@@ -257,11 +257,11 @@ description = "My awesome package"
 ```yaml
 # ❌ Wrong
 env:
-  gh_token: ${{ secrets.GITHUB_TOKEN }}
+  gh_token: ${{ secrets.GH_TOKEN }}
 
 # ✅ Correct
 with:
-  gh_token: ${{ secrets.GITHUB_TOKEN }}
+  gh_token: ${{ secrets.GH_TOKEN }}
 ```
 
 #### 4. "GitPushError: Failed to push branch (main) to remote"
@@ -288,7 +288,7 @@ Enable debug output to troubleshoot issues:
 - name: DataBurst Python Semantic Versioning
   uses: mostafaghadimi/python-semantic-versioning@v2.2.5
   with:
-    gh_token: ${{ secrets.GITHUB_TOKEN }}
+    gh_token: ${{ secrets.GH_TOKEN }}
     debug: 'true'
 ```
 
