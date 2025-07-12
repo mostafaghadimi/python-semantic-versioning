@@ -17,7 +17,7 @@ ENV PYTHONPATH=/app
 
 RUN cd /app && \
     chmod +x entrypoint.sh && \
-    uv sync --locked
+    uv sync
 
 ENV PYTHONPATH="/app"
 
