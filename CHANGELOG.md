@@ -1,6 +1,29 @@
 # CHANGELOG
 
 
+## v2.5.1 (2025-07-12)
+
+### Bug Fixes
+
+- Remove locked flag from uv sync command
+  ([`b878d71`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/b878d7157c9cdc82ec1dfe5f404dae90c61a5e6a))
+
+### Chores
+
+- Bump version to v2.5.0 [skip ci]
+  ([`a8d2620`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/a8d26207431ed1c2f14322a992affe45d2e350f4))
+
+### Documentation
+
+- Replace GH_TOKEN with GITHUB_TOKENg
+  ([`ad528b0`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/ad528b07d1b534b47b8e45bd4137e520d471c390))
+
+### Refactoring
+
+- Use GITHUB_TOKEN instead of manually created PAT (GH_TOKEN)
+  ([`3c29ffd`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/3c29ffd7e5e5e709c4f6c2843b90d34603d98770))
+
+
 ## v2.5.0 (2025-07-12)
 
 ### Bug Fixes
