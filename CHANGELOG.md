@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.3.7 (2025-07-12)
+
+### Bug Fixes
+
+- Debug exit code
+  ([`2875d5b`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/2875d5bdb73182be58b5b10bee35540a6e5bcf52))
+
+
 ## v2.3.6 (2025-07-12)
 
 ### Bug Fixes
