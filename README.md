@@ -17,6 +17,33 @@ A GitHub Action for automated semantic versioning using custom emoji commit pars
 
 ### Basic Usage
 
+#### Option A: Using GITHUB_TOKEN (Recommended)
+
+```yaml
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: DataBurst Python Semantic Versioning
+        uses: mostafaghadimi/python-semantic-versioning@<desired_version>
+        with:
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+#### Option B: Using Personal Access Token
+
 ```yaml
 name: Release
 
@@ -34,9 +61,8 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GH_TOKEN }}
 
-
       - name: DataBurst Python Semantic Versioning
-        uses: mostafaghadimi/python-semantic-versioning@v2.2.5
+        uses: mostafaghadimi/python-semantic-versioning@<desired_version>
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
 ```
@@ -61,7 +87,7 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
 
       - name: DataBurst Python Semantic Versioning
-        uses: mostafaghadimi/python-semantic-versioning@v2.2.5
+        uses: mostafaghadimi/python-semantic-versioning@<desired_version>
         id: semantic-release
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
@@ -139,7 +165,7 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
 
       - name: DataBurst Python Semantic Versioning
-        uses: mostafaghadimi/python-semantic-versioning@v2.2.5
+        uses: mostafaghadimi/python-semantic-versioning@<desired_version>
         with:
           gh_token: ${{ secrets.GH_TOKEN }}
 ```
@@ -148,7 +174,7 @@ jobs:
 
 ```yaml
 - name: Test Release (Dry Run)
-  uses: mostafaghadimi/python-semantic-versioning@v2.2.5
+  uses: mostafaghadimi/python-semantic-versioning@<desired_version>
   with:
     gh_token: ${{ secrets.GH_TOKEN }}
     dry_run: 'true'
@@ -159,7 +185,7 @@ jobs:
 
 ```yaml
 - name: Create Prerelease
-  uses: mostafaghadimi/python-semantic-versioning@v2.2.5
+  uses: mostafaghadimi/python-semantic-versioning@<desired_version>
   with:
     gh_token: ${{ secrets.GH_TOKEN }}
     prerelease: 'true'
@@ -170,7 +196,7 @@ jobs:
 
 ```yaml
 - name: DataBurst Python Semantic Versioning
-  uses: mostafaghadimi/python-semantic-versioning@v2.2.5
+  uses: mostafaghadimi/python-semantic-versioning@<desired_version>
   id: semantic-release
   with:
     gh_token: ${{ secrets.GH_TOKEN }}
@@ -196,9 +222,33 @@ jobs:
    - Set to "Read and write permissions"
    - Enable "Allow GitHub Actions to create and approve pull requests"
 
-2. **Token Setup**: Use either:
-   - **Default `GH_TOKEN`** (recommended for most cases)
-   - **Personal Access Token** (if you need more permissions)
+2. **Token Setup**: Choose one of the following approaches:
+
+   **Option A: GITHUB_TOKEN (Recommended)**
+   - Use the default `GITHUB_TOKEN` that GitHub provides automatically
+   - No additional setup required
+   - Ensure repository has proper workflow permissions enabled
+   - Go to repository → Settings → Actions → General → Workflow permissions
+   - Set to "Read and write permissions"
+
+   **Option B: Personal Access Token (PAT)**
+   - Create a Personal Access Token for more control
+   - Go to GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
+   - Generate new token with these permissions:
+     - ✅ `Contents` (Read and write access to repository contents)
+     - ✅ `write:packages` (if you publish packages)
+   - Add the token as a repository secret named `GH_TOKEN`
+   - Use `${{ secrets.GH_TOKEN }}` in your workflow
+
+   **Comparison:**
+
+   | Aspect | GITHUB_TOKEN | Personal Access Token |
+   |--------|--------------|---------------------|
+   | Setup | ⚡ Automatic | 🔧 Manual creation |
+   | Security | 🛡️ GitHub managed | 🔐 User managed |
+   | Permissions | 📋 Limited to repo | 🎯 Contents read/write |
+   | Expiration | ❌ Never expires | ⏰ User defined |
+   | Use Case | ✅ Most projects | 🔧 Advanced needs |
 
 ### pyproject.toml Integration
 
@@ -246,8 +296,14 @@ description = "My awesome package"
 **Cause**: Token doesn't have write permissions
 **Solution**:
 
-- For `GH_TOKEN`: Enable write permissions in repository settings
-- For custom token: Ensure it has `repo` scope
+**For GITHUB_TOKEN:**
+- Go to repository → Settings → Actions → General → Workflow permissions
+- Set to "Read and write permissions"
+- Enable "Allow GitHub Actions to create and approve pull requests"
+
+**For Personal Access Token:**
+- Ensure your PAT has `Contents` (Read and write) permissions
+- Verify the token is correctly added as `GH_TOKEN` secret
 
 #### 3. "No GitHub token provided" Warning
 
@@ -286,7 +342,7 @@ Enable debug output to troubleshoot issues:
 
 ```yaml
 - name: DataBurst Python Semantic Versioning
-  uses: mostafaghadimi/python-semantic-versioning@v2.2.5
+  uses: mostafaghadimi/python-semantic-versioning@<desired_version>
   with:
     gh_token: ${{ secrets.GH_TOKEN }}
     debug: 'true'
