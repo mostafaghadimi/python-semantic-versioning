@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.4.0 (2025-07-12)
+
+### Features
+
+- Add support for updating version in pyproject.toml file
+  ([`3c6977d`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/3c6977d98ac171ccdff6a99b4297a9d4234aa162))
+
+
 ## v2.3.8 (2025-07-12)
 
 ### Bug Fixes
