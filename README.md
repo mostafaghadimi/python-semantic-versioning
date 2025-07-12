@@ -84,13 +84,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: DataBurst Python Semantic Versioning
         uses: mostafaghadimi/python-semantic-versioning@<desired_version>
         id: semantic-release
         with:
-          gh_token: ${{ secrets.GH_TOKEN }}
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
           dry_run: 'false'
           branch: 'main'
           prerelease: 'false'
@@ -162,12 +162,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: DataBurst Python Semantic Versioning
         uses: mostafaghadimi/python-semantic-versioning@<desired_version>
         with:
-          gh_token: ${{ secrets.GH_TOKEN }}
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ### Dry Run Testing
@@ -176,7 +176,7 @@ jobs:
 - name: Test Release (Dry Run)
   uses: mostafaghadimi/python-semantic-versioning@<desired_version>
   with:
-    gh_token: ${{ secrets.GH_TOKEN }}
+    gh_token: ${{ secrets.GITHUB_TOKEN }}
     dry_run: 'true'
     debug: 'true'
 ```
@@ -187,7 +187,7 @@ jobs:
 - name: Create Prerelease
   uses: mostafaghadimi/python-semantic-versioning@<desired_version>
   with:
-    gh_token: ${{ secrets.GH_TOKEN }}
+    gh_token: ${{ secrets.GITHUB_TOKEN }}
     prerelease: 'true'
     branch: 'develop'
 ```
@@ -199,7 +199,7 @@ jobs:
   uses: mostafaghadimi/python-semantic-versioning@<desired_version>
   id: semantic-release
   with:
-    gh_token: ${{ secrets.GH_TOKEN }}
+    gh_token: ${{ secrets.GITHUB_TOKEN }}
 
 - name: Deploy if new release
   if: steps.semantic-release.outputs.released == 'true'
@@ -288,7 +288,6 @@ description = "My awesome package"
   uses: actions/checkout@v4
   with:
     fetch-depth: 0
-    token: ${{ secrets.GH_TOKEN }}
 ```
 
 #### 2. "Write access to repository not granted" Error
@@ -297,11 +296,13 @@ description = "My awesome package"
 **Solution**:
 
 **For GITHUB_TOKEN:**
+
 - Go to repository → Settings → Actions → General → Workflow permissions
 - Set to "Read and write permissions"
 - Enable "Allow GitHub Actions to create and approve pull requests"
 
 **For Personal Access Token:**
+
 - Ensure your PAT has `Contents` (Read and write) permissions
 - Verify the token is correctly added as `GH_TOKEN` secret
 
@@ -333,7 +334,8 @@ Add `token` to checkout action as input.
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GH_TOKEN }}  # This line
+          token: ${{ secrets.GITHUB_TOKEN }}  # Option A
+          token: ${{ secrets.GH_TOKEN }}  # Option B
 ```
 
 ### Debug Mode
@@ -344,7 +346,7 @@ Enable debug output to troubleshoot issues:
 - name: DataBurst Python Semantic Versioning
   uses: mostafaghadimi/python-semantic-versioning@<desired_version>
   with:
-    gh_token: ${{ secrets.GH_TOKEN }}
+    gh_token: ${{ secrets.GITHUB_TOKEN }}
     debug: 'true'
 ```
 
