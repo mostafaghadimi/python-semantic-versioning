@@ -10,7 +10,7 @@ no_git_verify = false
 tag_format = "v{version}"
 
 [semantic_release.remote.token]
-env = "GH_TOKEN"
+env = "GITLAB_TOKEN"
 
 [tool.semantic_release.branches.main]
 match = "(main|master)"

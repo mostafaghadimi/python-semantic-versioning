@@ -3,7 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - main
+      - feature/add-separated-branch-to-push-gitlab-image-to-the-dockerhub
 
 jobs:
   docker:
@@ -26,4 +26,5 @@ jobs:
         with:
           context: .
           push: true
-          tags: mostafaghadimi/python-semantic-versioning:github-latest
+          file: Dockerfile.gitlab
+          tags: mostafaghadimi/python-semantic-versioning:gitlab-latest
