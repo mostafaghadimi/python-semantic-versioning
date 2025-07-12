@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.3.8 (2025-07-12)
+
+### Bug Fixes
+
+- Replace command to obtain current version
+  ([`859c478`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/859c47829c5907e797ee47866d0ec4bc5baf99e9))
+
+
 ## v2.3.7 (2025-07-12)
 
 ### Bug Fixes
