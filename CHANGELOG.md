@@ -1,6 +1,24 @@
 # CHANGELOG
 
 
+## v2.7.0 (2025-08-06)
+
+### Bug Fixes
+
+- Add end if statement for bash
+  ([`a200e75`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/a200e759af81a1cff3c881eae4ab0a43d096345b))
+
+### Chores
+
+- Bump version to v2.6.0 [skip ci]
+  ([`85e34ed`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/85e34edea1d881c5ce101b5e4300c0cd8a06daeb))
+
+### Features
+
+- Add script to change the version in package.json file
+  ([`da51496`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/da51496403b8718ff411fda25eee154b5394e954))
+
+
 ## v2.6.0 (2025-07-12)
 
 ### Chores
