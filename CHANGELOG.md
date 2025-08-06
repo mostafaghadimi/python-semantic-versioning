@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v2.7.2 (2025-08-06)
+
+### Bug Fixes
+
+- Resolve the sed command issue with single quotation
+  ([`ccf822f`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/ccf822f66449054f32ab3e2f9b2ba5d28550b334))
+
+### Chores
+
+- Bump version to v2.7.1 [skip ci]
+  ([`841ef13`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/841ef1355b7074d997d778a6dbe4ab18361c523f))
+
+
 ## v2.7.1 (2025-08-06)
 
 ### Bug Fixes
