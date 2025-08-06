@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v2.7.3 (2025-08-06)
+
+### Bug Fixes
+
+- Resolve sed command to replace the version no matter what is inside it for package.json
+  ([`a68f124`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/a68f124ec4cf5607c17529debc5bc1aa79c97110))
+
+### Chores
+
+- Bump version to v2.7.2 [skip ci]
+  ([`c4c93fd`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/c4c93fdd452599992d77570adf996e52d566a67a))
+
+
 ## v2.7.2 (2025-08-06)
 
 ### Bug Fixes
