@@ -85,7 +85,7 @@ else
         if [ -f "package.json" ]; then
           if grep -q '"version"[[:space:]]*:' package.json; then
             echo "Debug: Found version line in package.json, updating to $version"
-            sed -i 's/"version"[[:space:]]*:[[:space:]]*"[0-9]*\.[0-9]*\.[0-9]*"/"version": "$version"/' package.json
+            sed -i "s/\"version\"[[:space:]]*:[[:space:]]*\"[0-9]*\.[0-9]*\.[0-9]*\"/\"version\": \"$version\"/" package.json
             echo "✅ Updated package.json version to $version"
             git add package.json
             git commit -m ":bookmark: chore: bump JS version to $version [skip ci]"
