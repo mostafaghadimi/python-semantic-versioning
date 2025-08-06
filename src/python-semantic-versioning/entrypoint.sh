@@ -93,6 +93,7 @@ else
           else
             echo "Debug: No version line found in package.json"
           fi
+        fi
       fi
     elif echo "$output" | grep -q "No release will be made"; then
       echo "ℹ️ No release needed - no significant changes since last release"
