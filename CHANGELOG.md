@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v2.7.1 (2025-08-06)
+
+### Bug Fixes
+
+- Resolve the issue with sed command for linux
+  ([`e821383`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/e8213833caa14a853ebae39b8ce358818f9a6e40))
+
+### Chores
+
+- Bump version to v2.7.0 [skip ci]
+  ([`7a82dad`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/7a82dadf0023549005eb3830dffaa737f49e17b6))
+
+
 ## v2.7.0 (2025-08-06)
 
 ### Bug Fixes
