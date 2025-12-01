@@ -132,7 +132,7 @@ This action uses a custom emoji-based commit parser. Your commits should follow 
 
 ### Version Bumps
 
-- 🚀 **Major version** (breaking changes): `🚀 feat: breaking change`
+- 🚀 **Major version** (breaking changes): `🚀 feat!: breaking change`
 - ✨ **Minor version** (new features): `✨ feat: new feature`
 - 🐛 **Patch version** (bug fixes): `🐛 fix: bug fix`
 
@@ -354,7 +354,7 @@ Enable debug output to troubleshoot issues:
 
 | Commit Type | Emoji | Version Bump | Example |
 |-------------|-------|--------------|---------|
-| Breaking Change | 🚀 | Major (1.0.0 → 2.0.0) | `🚀 feat: breaking API change` |
+| Breaking Change | 🚀 | Major (1.0.0 → 2.0.0) | `🚀 feat!: breaking API change` |
 | New Feature | ✨ | Minor (1.0.0 → 1.1.0) | `✨ feat: add new endpoint` |
 | Bug Fix | 🐛 | Patch (1.0.0 → 1.0.1) | `🐛 fix: resolve login issue` |
 | Documentation | 📝 | None | `📝 docs: update README` |
