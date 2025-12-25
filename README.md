@@ -112,6 +112,8 @@ jobs:
 | `dry_run` | Perform a dry run without making changes | ❌ No | `false` |
 | `branch` | Branch to release from | ❌ No | `main` |
 | `prerelease` | Create a prerelease | ❌ No | `false` |
+| `prerelease_branch` | Branch name for pre-releases (e.g., dev, staging, beta). Only applies when prerelease is true. | ❌ No | `dev` |
+| `prerelease_token` | Token/suffix to append to pre-release versions (e.g., rc, alpha, beta). Only applies when prerelease is true. | ❌ No | `rc` |
 | `commit_author` | Commit author for release commits | ❌ No | `github-actions[bot] <github-actions[bot]@users.noreply.github.com>` |
 | `semantic_release_config` | Semantic release config file name | ❌ No | `/app/python-semantic-release-config.toml` |
 | `debug` | Enable debug output | ❌ No | `false` |
@@ -183,13 +185,67 @@ jobs:
 
 ### Prerelease Workflow
 
+**Simple Prerelease (Using Defaults):**
+
 ```yaml
-- name: Create Prerelease
+name: Pre-Release from Dev Branch
+
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  prerelease:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Prerelease with RC suffix
+        uses: mostafaghadimi/python-semantic-versioning@<desired_version>
+        with:
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'dev'
+          prerelease: 'true'
+          # Uses defaults: prerelease_branch='dev', prerelease_token='rc'
+          # Result: v1.2.3-rc.1, v1.2.3-rc.2, etc.
+```
+
+**Custom Prerelease Tokens:**
+
+```yaml
+# Alpha releases from alpha branch
+- name: Create Alpha Release
   uses: mostafaghadimi/python-semantic-versioning@<desired_version>
   with:
     gh_token: ${{ secrets.GITHUB_TOKEN }}
+    branch: 'alpha'
     prerelease: 'true'
-    branch: 'develop'
+    prerelease_branch: 'alpha'
+    prerelease_token: 'alpha'  # Creates: v1.2.3-alpha.1
+
+# Beta releases from beta branch  
+- name: Create Beta Release
+  uses: mostafaghadimi/python-semantic-versioning@<desired_version>
+  with:
+    gh_token: ${{ secrets.GITHUB_TOKEN }}
+    branch: 'beta'
+    prerelease: 'true'
+    prerelease_branch: 'beta'
+    prerelease_token: 'beta'  # Creates: v1.2.3-beta.1
+
+# RC releases from staging branch (overriding defaults)
+- name: Create RC Release from Staging
+  uses: mostafaghadimi/python-semantic-versioning@<desired_version>
+  with:
+    gh_token: ${{ secrets.GITHUB_TOKEN }}
+    branch: 'staging'
+    prerelease: 'true'
+    prerelease_branch: 'staging'
+    prerelease_token: 'rc'  # Creates: v1.2.3-rc.1
 ```
 
 ### Using Outputs
@@ -215,6 +271,135 @@ jobs:
 ```
 
 ## Configuration
+
+### Pre-release Configuration
+
+You can configure pre-release branches and their version suffixes dynamically using the action inputs. The action comes with sensible defaults (`dev` branch with `rc` suffix) that you can easily customize.
+
+#### How It Works
+
+When you set `prerelease: 'true'`, the action will:
+
+1. Use your base configuration file
+2. Dynamically add/override the pre-release branch configuration at runtime
+3. Create versions with your specified token suffix
+4. Use defaults (`dev` and `rc`) if you don't provide custom values
+
+#### Default Behavior
+
+The action has built-in defaults for convenience:
+
+- Default `prerelease_branch`: `dev`
+- Default `prerelease_token`: `rc`
+
+This means you can simply set `prerelease: 'true'` and get `v1.2.3-rc.1` versions from the `dev` branch without any additional configuration.
+
+#### Examples
+
+**Example 1: Simple Dev Branch with RC Suffix (Using Defaults)**
+
+```yaml
+- uses: mostafaghadimi/python-semantic-versioning@<desired_version>
+  with:
+    gh_token: ${{ secrets.GITHUB_TOKEN }}
+    branch: 'dev'
+    prerelease: 'true'
+    # prerelease_branch defaults to 'dev'
+    # prerelease_token defaults to 'rc'
+```
+
+Result: `v1.2.3-rc.1`, `v1.2.3-rc.2`, etc.
+
+**Example 2: Staging Branch with Beta Suffix (Custom)**
+
+```yaml
+- uses: mostafaghadimi/python-semantic-versioning@<desired_version>
+  with:
+    gh_token: ${{ secrets.GITHUB_TOKEN }}
+    branch: 'staging'
+    prerelease: 'true'
+    prerelease_branch: 'staging'
+    prerelease_token: 'beta'
+```
+
+Result: `v1.2.3-beta.1`, `v1.2.3-beta.2`, etc.
+
+**Example 3: Alpha Branch with Alpha Suffix (Custom)**
+
+```yaml
+- uses: mostafaghadimi/python-semantic-versioning@<desired_version>
+  with:
+    gh_token: ${{ secrets.GITHUB_TOKEN }}
+    branch: 'alpha'
+    prerelease: 'true'
+    prerelease_branch: 'alpha'
+    prerelease_token: 'alpha'
+```
+
+Result: `v1.2.3-alpha.1`, `v1.2.3-alpha.2`, etc.
+
+**Example 4: Standard Release (No Prerelease)**
+
+```yaml
+- uses: mostafaghadimi/python-semantic-versioning@<desired_version>
+  with:
+    gh_token: ${{ secrets.GITHUB_TOKEN }}
+    branch: 'main'
+    prerelease: 'false'
+    # No dynamic configuration generated
+```
+
+Result: `v1.2.3`, `v1.2.4`, etc. (standard releases)
+
+#### Multi-Branch Workflow Example
+
+```yaml
+name: Release Workflow
+
+on:
+  push:
+    branches: [main, dev, staging]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Production release from main
+      - name: Production Release
+        if: github.ref == 'refs/heads/main'
+        uses: mostafaghadimi/python-semantic-versioning@<desired_version>
+        with:
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'main'
+          prerelease: 'false'
+
+      # RC release from dev (using defaults)
+      - name: RC Release from Dev
+        if: github.ref == 'refs/heads/dev'
+        uses: mostafaghadimi/python-semantic-versioning@<desired_version>
+        with:
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'dev'
+          prerelease: 'true'
+          # Uses defaults: prerelease_branch='dev', prerelease_token='rc'
+
+      # Beta release from staging (custom config)
+      - name: Beta Release from Staging
+        if: github.ref == 'refs/heads/staging'
+        uses: mostafaghadimi/python-semantic-versioning@<desired_version>
+        with:
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: 'staging'
+          prerelease: 'true'
+          prerelease_branch: 'staging'
+          prerelease_token: 'beta'
+```
 
 ### Repository Settings
 
