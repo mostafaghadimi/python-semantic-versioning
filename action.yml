@@ -21,6 +21,16 @@ inputs:
     required: false
     default: 'false'
     
+  prerelease_branch:
+    description: 'Branch name for pre-releases (e.g., dev, staging, beta). Only applies when prerelease is true.'
+    required: false
+    default: 'dev'
+
+  prerelease_token:
+    description: 'Token/suffix to append to pre-release versions (e.g., rc, alpha, beta). Only applies when prerelease is true.'
+    required: false
+    default: 'rc'
+
   commit_author:
     description: 'Commit author for release commits'
     required: false
