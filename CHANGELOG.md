@@ -1,6 +1,25 @@
 # CHANGELOG
 
 
+## v2.8.0 (2025-12-25)
+
+### Chores
+
+- Bump version to v2.7.3 [skip ci]
+  ([`55b35ed`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/55b35ed5b0fe9e1d757ae62c79a502c1139e1924))
+
+### Documentation
+
+- Fix breaking change commit format in README
+  ([`5c98938`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/5c989389134a7d806703f945c67258a0f7fdc0ce))
+
+### Features
+
+- Add pre release configuration and set default value for it (#5)
+  ([#5](https://github.com/mostafaghadimi/python-semantic-versioning/pull/5),
+  [`797d381`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/797d3819d6bb4590368345950f9a90aa40aaee98))
+
+
 ## v2.7.3 (2025-08-06)
 
 ### Bug Fixes
