@@ -5,6 +5,8 @@ DEBUG=${INPUT_DEBUG:-false}
 DRY_RUN=${INPUT_DRY_RUN:-false}
 BRANCH=${INPUT_BRANCH:-main}
 PRERELEASE=${INPUT_PRERELEASE:-false}
+PRERELEASE_BRANCH=${INPUT_PRERELEASE_BRANCH:-dev}
+PRERELEASE_TOKEN=${INPUT_PRERELEASE_TOKEN:-rc}
 SEMANTIC_RELEASE_CONFIG=${INPUT_SEMANTIC_RELEASE_CONFIG:-/app/python-semantic-release-config.toml}
 export GIT_COMMIT_AUTHOR="${INPUT_COMMIT_AUTHOR}"
 
@@ -24,6 +26,35 @@ if [ -n "${INPUT_GH_TOKEN:-}" ]; then
     echo "✅ GitHub token configured for releases"
 elif [ -n "${GITHUB_ACTIONS:-}" ]; then
     echo "⚠️ Warning: No GitHub token provided. Releases may not work."
+fi
+
+# Create a dynamic config if prerelease is enabled and both branch and token are provided
+RUNTIME_CONFIG="/tmp/runtime-semantic-release-config.toml"
+if [[ "$PRERELEASE" == "true" ]] && [[ -n "$PRERELEASE_BRANCH" ]] && [[ -n "$PRERELEASE_TOKEN" ]]; then
+    echo "📝 Generating dynamic configuration for prerelease branch: $PRERELEASE_BRANCH with token: $PRERELEASE_TOKEN"
+    
+    # Copy base config
+    cp "$SEMANTIC_RELEASE_CONFIG" "$RUNTIME_CONFIG"
+    
+    # Add or update the prerelease branch configuration
+    cat >> "$RUNTIME_CONFIG" << EOF
+
+[tool.semantic_release.branches.$PRERELEASE_BRANCH]
+match = "$PRERELEASE_BRANCH"
+prerelease_token = "$PRERELEASE_TOKEN"
+prerelease = true
+EOF
+    
+    if [[ "$DEBUG" == "true" ]]; then
+        echo "Debug: Runtime config content:"
+        cat "$RUNTIME_CONFIG"
+    fi
+    
+    SEMANTIC_RELEASE_CONFIG="$RUNTIME_CONFIG"
+elif [[ "$PRERELEASE" == "true" ]] && ([[ -z "$PRERELEASE_BRANCH" ]] || [[ -z "$PRERELEASE_TOKEN" ]]); then
+    echo "⚠️ Warning: prerelease is enabled but prerelease_branch or prerelease_token is not set."
+    echo "   Using base configuration from $SEMANTIC_RELEASE_CONFIG"
+    echo "   To configure dynamic prerelease, set both 'prerelease_branch' and 'prerelease_token' inputs."
 fi
 
 echo "released=false" >> $GITHUB_OUTPUT
