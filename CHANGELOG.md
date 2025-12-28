@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v2.8.1 (2025-12-28)
+
+### Bug Fixes
+
+- Quote branch names in TOML config to support slashes in branch names
+  ([`9ac96a3`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/9ac96a3dcf61bba7b2d028546aed258c2c107055))
+
+### Chores
+
+- Bump version to v2.8.0 [skip ci]
+  ([`620d801`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/620d8015c4fe27b5df5bcf7d8641054c3fce5cf3))
+
+
 ## v2.8.0 (2025-12-25)
 
 ### Chores
