@@ -39,7 +39,7 @@ if [[ "$PRERELEASE" == "true" ]] && [[ -n "$PRERELEASE_BRANCH" ]] && [[ -n "$PRE
     # Add or update the prerelease branch configuration
     cat >> "$RUNTIME_CONFIG" << EOF
 
-[tool.semantic_release.branches.$PRERELEASE_BRANCH]
+[tool.semantic_release.branches."$PRERELEASE_BRANCH"]
 match = "$PRERELEASE_BRANCH"
 prerelease_token = "$PRERELEASE_TOKEN"
 prerelease = true
