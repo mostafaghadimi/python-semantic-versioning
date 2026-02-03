@@ -28,15 +28,22 @@ elif [ -n "${GITHUB_ACTIONS:-}" ]; then
     echo "⚠️ Warning: No GitHub token provided. Releases may not work."
 fi
 
-# Create a dynamic config if prerelease is enabled and both branch and token are provided
+# Always create a runtime config to handle version file detection
 RUNTIME_CONFIG="/tmp/runtime-semantic-release-config.toml"
+cp "$SEMANTIC_RELEASE_CONFIG" "$RUNTIME_CONFIG"
+
+# Detect version files and configure semantic-release to manage them natively
+# The version_toml setting must be under [tool.semantic_release] section
+if [ -f "pyproject.toml" ] && grep -q "^version = " pyproject.toml; then
+    echo "📦 Detected pyproject.toml - will be updated automatically"
+    # Insert version_toml right after the [tool.semantic_release] header using awk
+    awk '/^\[tool\.semantic_release\]$/ { print; print "version_toml = [\"pyproject.toml:project.version\"]"; next } 1' "$RUNTIME_CONFIG" > "${RUNTIME_CONFIG}.tmp" && mv "${RUNTIME_CONFIG}.tmp" "$RUNTIME_CONFIG"
+fi
+
+# Add prerelease branch configuration if enabled
 if [[ "$PRERELEASE" == "true" ]] && [[ -n "$PRERELEASE_BRANCH" ]] && [[ -n "$PRERELEASE_TOKEN" ]]; then
-    echo "📝 Generating dynamic configuration for prerelease branch: $PRERELEASE_BRANCH with token: $PRERELEASE_TOKEN"
+    echo "📝 Configuring prerelease branch: $PRERELEASE_BRANCH with token: $PRERELEASE_TOKEN"
     
-    # Copy base config
-    cp "$SEMANTIC_RELEASE_CONFIG" "$RUNTIME_CONFIG"
-    
-    # Add or update the prerelease branch configuration
     cat >> "$RUNTIME_CONFIG" << EOF
 
 [tool.semantic_release.branches."$PRERELEASE_BRANCH"]
@@ -44,17 +51,16 @@ match = "$PRERELEASE_BRANCH"
 prerelease_token = "$PRERELEASE_TOKEN"
 prerelease = true
 EOF
-    
-    if [[ "$DEBUG" == "true" ]]; then
-        echo "Debug: Runtime config content:"
-        cat "$RUNTIME_CONFIG"
-    fi
-    
-    SEMANTIC_RELEASE_CONFIG="$RUNTIME_CONFIG"
 elif [[ "$PRERELEASE" == "true" ]] && ([[ -z "$PRERELEASE_BRANCH" ]] || [[ -z "$PRERELEASE_TOKEN" ]]); then
     echo "⚠️ Warning: prerelease is enabled but prerelease_branch or prerelease_token is not set."
-    echo "   Using base configuration from $SEMANTIC_RELEASE_CONFIG"
     echo "   To configure dynamic prerelease, set both 'prerelease_branch' and 'prerelease_token' inputs."
+fi
+
+SEMANTIC_RELEASE_CONFIG="$RUNTIME_CONFIG"
+
+if [[ "$DEBUG" == "true" ]]; then
+    echo "Debug: Runtime config content:"
+    cat "$RUNTIME_CONFIG"
 fi
 
 echo "released=false" >> $GITHUB_OUTPUT
@@ -92,39 +98,13 @@ else
 
   if [[ $exit_code -eq 0 ]]; then
     if echo "$output" | grep -q "Creating release"; then
-      version=$(PYTHONPATH=/app /app/.venv/bin/semantic-release version --print-last-released-tag)
+      # Extract version from the semantic-release output (e.g., "The next version is: 0.4.6!")
+      version=$(echo "$output" | grep -oE "The next version is: ([0-9]+\.[0-9]+\.[0-9]+(-[a-zA-Z0-9.]+)?)" | sed 's/The next version is: //')
       if [[ -n "$version" ]]; then
         echo "version=$version" >> $GITHUB_OUTPUT
         echo "tag=v$version" >> $GITHUB_OUTPUT
         echo "released=true" >> $GITHUB_OUTPUT
         echo "✅ Successfully created release v$version"
-        
-        if [ -f "pyproject.toml" ]; then
-          if grep -q "^version = " pyproject.toml; then
-            echo "Debug: Found version line in pyproject.toml, updating to $version"
-            sed -i "s/^version = .*/version = \"$version\"/" pyproject.toml
-            echo "✅ Updated pyproject.toml version to $version"
-            git add pyproject.toml
-            git commit -m ":bookmark: chore: bump version to $version [skip ci]"
-            git push
-          else
-            echo "Debug: No version line found in pyproject.toml"
-          fi
-        else
-          echo "Debug: No pyproject.toml file found"
-        fi
-        if [ -f "package.json" ]; then
-          if grep -q '"version"[[:space:]]*:' package.json; then
-            echo "Debug: Found version line in package.json, updating to $version"
-            sed -i "s/\"version\"[[:space:]]*:[[:space:]]*\"[^\"]*\"/\"version\": \"$version\"/" package.json
-            echo "✅ Updated package.json version to $version"
-            git add package.json
-            git commit -m ":bookmark: chore: bump JS version to $version [skip ci]"
-            git push
-          else
-            echo "Debug: No version line found in package.json"
-          fi
-        fi
       fi
     elif echo "$output" | grep -q "No release will be made"; then
       echo "ℹ️ No release needed - no significant changes since last release"

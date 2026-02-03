@@ -1,0 +1,24 @@
+name: Prerelease
+
+on:
+  push:
+    branches: [dev]
+
+jobs:
+  prerelease:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: DataBurst Python Semantic Versioning (Prerelease)
+        uses: mostafaghadimi/python-semantic-versioning@dev
+        with:
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          debug: true
+          prerelease: true
+          prerelease_branch: dev
+          prerelease_token: rc
