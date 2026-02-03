@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v2.9.0-rc.1 (2026-02-03)
+
+### Chores
+
+- Bump version to v2.8.1 [skip ci]
+  ([`f1d2d6f`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/f1d2d6f2a7a5b8d46739c0a471d0caad3b486a4d))
+
+### Features
+
+- Use native version_toml for atomic version updates
+  ([`43fa27b`](https://github.com/mostafaghadimi/python-semantic-versioning/commit/43fa27bef358ad64a04de3bbad69fb0d166a38f7))
+
+
 ## v2.8.1 (2025-12-28)
 
 ### Bug Fixes
